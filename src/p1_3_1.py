@@ -1,4 +1,4 @@
-PAIRS = {'C': 'G', 'G': 'C', 'A': 'T', 'T': 'A'}
+from consts import PAIRS
 
 def reverse_complement(text):
     out = []

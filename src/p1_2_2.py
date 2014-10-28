@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 from p1_2_1 import PatternCount
 
-def FrequentWords(Text, k):
-        FrequentPatterns = set()
+def FrequentWords(Text, k, t = 0):
         Count = []
         for i in range(len(Text) - k + 1):
             Pattern = Text[i : i + k]
             Count.append(PatternCount(Text, Pattern))
         maxCount = max(Count)
-        for i in range(len(Text) - k + 1):
-            if Count[i] == maxCount:
-                FrequentPatterns.add(Text[i : i + k])
-        #remove duplicates from FrequentPatterns
+
+        FrequentPatterns = set()
+        if maxCount >= t:
+            for i in range(len(Text) - k + 1):
+                if Count[i] == maxCount:
+                    FrequentPatterns.add(Text[i : i + k])
         return FrequentPatterns
 
 if __name__ == "__main__":
