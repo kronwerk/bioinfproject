@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
+from util import hamming
 
-def pattern_pos(Text, Pattern):
+def pattern_pos(Text, Pattern, d = 0):
     positions = []
     for i in range(len(Text) - len(Pattern) + 1):
-        if Text[i : i + len(Pattern)] == Pattern:
+        if hamming(Text[i : i + len(Pattern)], Pattern) <= d:
             positions.append(i)
     return positions
 
