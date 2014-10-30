@@ -25,3 +25,7 @@ def count_mismatched(Text, Pattern, d = 0):
         if hamming(Text[i : i + len(Pattern)], Pattern) <= d:
             count += 1
     return count
+
+if __name__ == "__main__":
+    print hamming("CTACAGCAATACGATCATATGCGGATCCGCAGTGGCCGGTAGACACACGT", "CTACCCCGCTGCTCAATGACCGGGACTAAAGAGGCGAAGATTATGGTGTG")
+    print count_mismatched("CATGCCATTCGCATTGTCCCAGTGA", "CCC", 2)

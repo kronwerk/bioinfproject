@@ -1,11 +1,13 @@
 from p1_2_2 import FrequentWords
-from p1_11 import FasterFrequentWords, ComputingFrequencies, number_to_pattern, pattern_to_number
+from p1_11 import FasterFrequentCounter
+from util import number_to_pattern, pattern_to_number
 
+ffc = FasterFrequentCounter()
 
 def lt_clumps(text, k, L, t):
     patterns = set()
     for i in range(len(text) - L + 1):
-        patterns.update(FasterFrequentWords(text[i : i + L], k, t))
+        patterns.update(ffc.FasterFrequentWords(text[i : i + L], k, t))
     return patterns
 
 def ClumpFinding(Genome, k, L, t):
@@ -14,7 +16,7 @@ def ClumpFinding(Genome, k, L, t):
     RN = xrange(N)
     Clump = [0] * N
     Text = Genome[:L]
-    FrequencyArray = ComputingFrequencies(Text, k, N)
+    FrequencyArray = ffc.ComputingFrequencies(Text, k, N)
     for j in RN:
         if FrequencyArray[j] >= t:
             Clump[j] = 1
@@ -34,7 +36,7 @@ def ClumpFinding(Genome, k, L, t):
 
 
 if __name__ == "__main__":
-    f = open(r"D:\soft\devProjects\bioinfproject\data\test.txt")
+    '''f = open(r"D:\soft\devProjects\bioinfproject\data\test.txt")
     Text = f.readline().strip()
-    f.close()
-    print len(ClumpFinding(Text, 9, 500, 3))
+    f.close()'''
+    print ClumpFinding("GCACAAGGCCGACAATAGGACGTAGCCTTGAAGACGACGTAGCGTGGTCGCATAAGTACAGTAGATAGTACCTCCCCCGCGCATCCTATTATTAAGTTAATT", 4, 30, 3)
